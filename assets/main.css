@@ -34,7 +34,7 @@
 body
 {
   width: 100%;
-  min-height: 100vh;
+  height: 100vh;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -46,16 +46,19 @@ body
 
 header, footer
 {
+  height: 10%;
   width: 100%;
-  padding: .5rem 0;
-  background-color: hsl(10, 0%, 10%, 50%);
-  font-size: 1.75rem;
+  padding: .1rem 0;
+  font-size: 1.3rem;
   text-align: center;
 }
 
 main
 {
+  height: 85%;
   width: 100%;
+  display: flex;
+  flex-direction: column;
   background-image: url("./img/palette_transparent.svg");
   background-repeat: no-repeat;
   background-size: contain;
@@ -64,7 +67,7 @@ main
 
 #models
 {
-  height: 12rem;
+  height: 35%;
   width: 100%;
   padding: 0 5%;
   display: flex;
@@ -242,9 +245,9 @@ main
 
 #color-container
 {
-  height: 18rem;
+  height: 80%;
   width: 100%;
-  background-color: hsl(10, 0%, 45%, 10%);
+  background-color: hsl(10, 0%, 50%, 10%);
 }
 
 .component-container
