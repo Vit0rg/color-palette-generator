@@ -1,0 +1,23 @@
+<svg version="1.1" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+ <g transform="matrix(1 0 0 1 .0069 -.00029)">
+  <path d="m35 2c-15 0-27 12-27 26s22 40 27 26c6.1-15 27-12 27-26s-12-26-27-26zm-0.27 37a4 3.8 0 0 1 4 3.8 4 3.8 0 0 1-4 3.8 4 3.8 0 0 1-4-3.8 4 3.8 0 0 1 4-3.8z" fill="#726330" stroke-linecap="round" stroke-linejoin="round"/>
+  <ellipse cx="37" cy="25" rx="4" ry="3.8" fill="#025"/>
+  <g transform="matrix(2.3 0 0 2.2 -4.6 -2.8)" fill="#025" stroke-width=".45">
+   <rect x="18" y="13" width="2.4" height=".95" rx=".043"/>
+   <rect x="15" y="13" width="3" height=".95" rx=".054"/>
+   <rect x="19" y="12" width="2.1" height=".95" rx=".038"/>
+   <rect x="15" y="11" width="3" height=".95" rx=".054"/>
+   <rect x="17" y="11" width="3" height=".95" rx=".054"/>
+   <rect x="16" y="12" width="3" height=".95" rx=".054"/>
+   <rect x="16" y="14" width="3" height=".95" rx=".054"/>
+  </g>
+  <ellipse cx="51" cy="25" rx="4" ry="3.8" fill="#2d1650"/>
+  <ellipse cx="43" cy="16" rx="4" ry="3.8" fill="#2ca089"/>
+  <ellipse cx="30" cy="12" rx="4" ry="3.8" fill="#250"/>
+  <ellipse cx="21" cy="20" rx="4" ry="3.8" fill="#d4aa00"/>
+  <ellipse cx="16" cy="30" rx="4" ry="3.8" fill="#d45500"/>
+  <ellipse cx="19" cy="41" rx="4" ry="3.8" fill="#800000"/>
+  <ellipse transform="matrix(.73 .68 -.68 .73 0 0)" cx="44" cy="-2.2" rx="1.4" ry="5.6" fill="#d5d5ff"/>
+  <ellipse transform="matrix(.74 .68 -.7 .71 0 0)" cx="45" cy="22" rx=".61" ry="21" fill="#40351b" stroke="#40351b" stroke-linecap="round" stroke-linejoin="round"/>
+ </g>
+</svg>
