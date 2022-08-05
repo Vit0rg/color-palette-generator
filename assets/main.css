@@ -8,15 +8,12 @@
 
 :root
 {
-  --hue-background: 10;
-  --saturation-background: 0%;
-  --luminosity-background: 85%;
   --hue-primary: 10;
   --saturation-primary: 0%;
   --luminosity-primary: 40%;
-  --hue-secundary: 10;
-  --saturation-secundary: 0%;
-  --luminosity-secundary: 0%;
+  --hue-secondary: 10;
+  --saturation-secondary: 0%;
+  --luminosity-secondary: 0%;
   --hue-tertiary: 10;
   --saturation-tertiary: 0%;
   --luminosity-tertiary: 15%;
@@ -87,9 +84,9 @@ main
   width: 25%;
   display: flex;
   flex-direction: column;
-  --hue: var(--hue-background);
-  --saturation: var(--saturation-background);
-  --luminosity: var(--luminosity-background);
+  --hue: var(--hue-detail);
+  --saturation: var(--saturation-detail);
+  --luminosity: var(--luminosity-detail);
   color: hsl(var(--hue-text), var(--saturation-text), var(--luminosity-text));
 }
 
@@ -103,9 +100,9 @@ main
 {
   width: 100%;
   padding: .3rem 0;
-  --hue: var(--hue-secundary);
-  --saturation: var(--saturation-secundary);
-  --luminosity: var(--luminosity-secundary);
+  --hue: var(--hue-secondary);
+  --saturation: var(--saturation-secondary);
+  --luminosity: var(--luminosity-secondary);
   text-align: center;
 }
 
@@ -207,7 +204,7 @@ main
 .page-example:nth-of-type(3) .pseudo-footer
 {
   padding: .3rem 0;
-  font-size: 1.4rem;
+  font-size: 1.1rem;
 }
 
 .page-example:nth-of-type(3) .pseudo-main
@@ -226,9 +223,9 @@ main
 /*Fourth pseudo-page*/
 .page-example:last-of-type .pseudo-main
 {
-  background: linear-gradient(hsl(var(--hue-secundary), 
-                                  var(--saturation-secundary), 
-                                  var(--luminosity-secundary)), 
+  background: linear-gradient(hsl(var(--hue-secondary), 
+                                  var(--saturation-secondary), 
+                                  var(--luminosity-secondary)), 
                               hsl(var(--hue-tertiary), 
                                   var(--saturation-tertiary), 
                                   var(--luminosity-tertiary))
@@ -284,10 +281,6 @@ main
 
 .component-container .color-options span:nth-of-type(2)
 {
-  --hue: var(--hue-background);
-  --saturation: var(--saturation-background);
-  --luminosity: var(--luminosity-background);
-	background-color: hsl(var(--hue-primary), var(--saturation-primary), var(--luminosity-primary), 50%);
 	width: 100%;	
 }
 
@@ -300,7 +293,7 @@ main
 .component-container .color-options .button-container button
 {
   padding: .3rem;
-  margin: 0 auto;
+  margin: .2rem auto;
   font-size: 1.1rem;
   background-color: hsl(10, 0%, 15%);
   color: hsl(10, 0%, 90%);
