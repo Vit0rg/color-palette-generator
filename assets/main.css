@@ -307,9 +307,21 @@ main
   cursor: pointer;
 }
 
+.button-container:nth-of-type(2) button:last-of-type
+{
+  background-color: hsl(0, 80%, 30%);
+  border-radius: 2rem;
+}
+
+.button-container:nth-of-type(2) button:last-of-type:hover
+{
+  filter: invert(0);
+  background-color: hsl(0, 100%, 50%);
+}
+
 .hide
 {
-	display: none;
+	display: none!important;
 }
 
 
