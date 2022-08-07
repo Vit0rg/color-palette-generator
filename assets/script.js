@@ -2,6 +2,7 @@ const root = document.querySelector(':root');
 const copyColorButtons = document.querySelectorAll("[data-copy-button]");
 const generateColorButtons = document.querySelectorAll("[data-generate-button]");
 const formatColorButtons = document.querySelectorAll("[data-change-format-button]");
+const formatSubmenus = document.querySelectorAll("[data-format-container]");
 
 copyColorButtons.forEach(button =>
 {
@@ -50,7 +51,7 @@ function updateValues(sampleColor, category)
                        :
                        newTextColor = `hsl(${360 - newHue}, ${ 100 - newSaturation}%, 0%)`;
   sampleColor.style.setProperty("color", newTextColor);
-  sampleColor.innerText = `hsl:(${newHue}, ${newSaturation}%, ${newLuminosity}%)`;
+  sampleColor.innerText = `hsl(${newHue}, ${newSaturation}%, ${newLuminosity}%)`;
   
   root.style.setProperty(`--hue-${category}`, `${newHue}`);
   root.style.setProperty(`--saturation-${category}`, `${newSaturation}%`);
@@ -71,7 +72,6 @@ function hideToggler(elementToToggle)
   elementToToggle.classList.toggle("hide")
 }
 
-const formatSubmenus = document.querySelectorAll("[data-format-container]");
 Array.from(formatSubmenus).forEach(submenu =>
 {
   for (let i = 0; i < 3; i++) 
@@ -92,47 +92,73 @@ Array.from(formatSubmenus).forEach(submenu =>
 
 function formatConversor(sampleColor, typeToConvert)
 {
-  //console.log(sampleColor.innerText.charAt(0), typeToConvert.innerText.toLowerCase())
-  console.log(sampleColor.innerText)
   if (typeToConvert.innerText.toLowerCase().charAt(0) === sampleColor.innerText.charAt(0))
-  {
-    console.log("already converted")
     return
-  }
   
   switch (typeToConvert.innerText.toLowerCase().charAt(0)) 
   {
-    //hsl:(232, 70%, 23%); rgb(240, 248, 255); #abcdef
     case 'h':
     //Remove "rgb", then "()", then " " and finally ",", returning an Array of Numbers:
     if(sampleColor.innerText.toLowerCase().charAt(0) === 'r')
     {
       let colors = sampleColor.innerText.slice(3).slice(1, -1).replaceAll(' ','').split(',');
-      rgbConvertedToHsl = rgbToHsl(colors[0], colors[1], colors[2]);
-      sampleColor.innerText = `hsl:(${rgbConvertedToHsl[0]}, ${rgbConvertedToHsl[1]}%, ${rgbConvertedToHsl[2]}%)`;
-      return;
+      let rgbConvertedToHsl = rgbToHsl(colors[0], colors[1], colors[2]);
+      sampleColor.innerText = `hsl(${rgbConvertedToHsl[0]}, ${rgbConvertedToHsl[1]}%, ${rgbConvertedToHsl[2]}%)`;
     }
+    else
+    {
+      let colors = sampleColor.innerText.replace('#', '');
+      let hexConvertedToRgb = [];
 
-    let colors = sampleColor.innerText.replace("#", '');
-    rgbConvertedToHsl = rgbToHsl(parseInt(`${colors[0]}`, 16), parseInt(`${colors[1]}`, 16), parseInt(`${colors[2]}`, 16));
-    console.log(`${rgbConvertedToHsl[0]}`);
-    sampleColor.innerText = `hsl:(${rgbConvertedToHsl[0]}, ${rgbConvertedToHsl[1]}%, ${rgbConvertedToHsl[2]}%)`;
+      for (let i = 0; i < 3; i++) 
+      {
+        hexConvertedToRgb[i] = parseInt(colors.slice(2*i, 2*(i+1)), 16);
+      }
+      
+      rgbConvertedToHsl = rgbToHsl(hexConvertedToRgb[0], hexConvertedToRgb[1], hexConvertedToRgb[2]);
+      sampleColor.innerText = `hsl(${rgbConvertedToHsl[0]}, ${rgbConvertedToHsl[1]}%, ${rgbConvertedToHsl[2]}%)`;
+    }
     break;
     
     case 'r':
-    //rgbToHsl(r, g, b)
-    if(typeToConvert.innerText.toLowerCase().charAt(0) === 'r')
+    //hslToRgb(r, g, b)
+    if(sampleColor.innerText.toLowerCase().charAt(0) === 'h')
     {
-      //return `set formated value`
+      //Remove "hsl", then "()", then " " and "%" and finally ",", returning an Array of Numbers:
+      let colors = sampleColor.innerText.slice(3).slice(1, -1).replaceAll(' ','').replaceAll('%', '').split(',');
+      let hslConvertedToRgb = hslToRgb( colors[0], colors[1], colors[2]);
+      sampleColor.innerText = `rgb(${hslConvertedToRgb[0]}, ${hslConvertedToRgb[1]}, ${hslConvertedToRgb[2]})`;
     }
-    //rgbToHex
-    //return `set formated value`
-    console.log("r")
-    
-    break;
+    else
+    {
+      let colors = sampleColor.innerText.replace('#', '');
+      let hslConvertedToRgb = [];
 
+      for (let i = 0; i < 3; i++) 
+      {
+        hslConvertedToRgb[i] = parseInt(colors.slice(2*i, 2*(i+1)), 16);
+      }
+
+      sampleColor.innerText = `rgb(${hslConvertedToRgb[0]}, ${hslConvertedToRgb[1]}, ${hslConvertedToRgb[2]})`;    
+    }
+    break;
+    
     case '#':
-    console.log(typeToConvert.innerText.toLowerCase().charAt(0))
+    if(sampleColor.innerText.toLowerCase().charAt(0) === 'h')
+    {
+      //Remove "hsl", then "()", then " " and "%" and finally ",", returning an Array of Numbers:
+      let colors = sampleColor.innerText.slice(3).slice(1, -1).replaceAll(' ','').replaceAll('%', '').split(',');
+      let hslConvertedToRgb = hslToRgb( colors[0], colors[1], colors[2]);
+      
+      sampleColor.innerText = `#${hslConvertedToRgb[0].toString(16).padStart(2,'0')}${hslConvertedToRgb[1].toString(16).padStart(2,'0')}${hslConvertedToRgb[2].toString(16).padStart(2,'0')}`;
+    }
+    else
+    {
+      //Remove "rgb", then "()", then " " and "%" and finally ",", returning an Array of Numbers:
+      let colors = sampleColor.innerText.slice(3).slice(1, -1).replaceAll(' ','').replaceAll('%', '').split(',');
+      console.log(colors)
+      sampleColor.innerText = `#${parseInt(colors[0], 10).toString(16).padStart(2,'0')}${parseInt(colors[1], 10).toString(16).padStart(2,'0')}${parseInt(colors[2], 10).toString(16).padStart(2,'0')}`;
+    }
     break;
   }
 
@@ -140,32 +166,12 @@ function formatConversor(sampleColor, typeToConvert)
 
 function hslToRgb(h, s, l)
 {
-  let r, g, b;
-
-  if(s == 0)
-  {
-    r = g = b = l; // achromatic
-    return
-  }
-  let hue2rgb = function hue2rgb(p, q, t)
-  
-  {
-    if(t < 0) t += 1;
-    if(t > 1) t -= 1;
-    if(t < 1/6) return p + (q - p) * 6 * t;
-    if(t < 1/2) return q;
-    if(t < 2/3) return p + (q - p) * (2/3 - t) * 6;
-    return p;
-  }
-
-  let q = l < 0.5 ? l * (1 + s) : l + s - l * s;
-  let p = 2 * l - q;
-
-  r = hue2rgb(p, q, h + 1/3);
-  g = hue2rgb(p, q, h);
-  b = hue2rgb(p, q, h - 1/3);
-  
-  return [Math.min(floor(r*256),255), Math.min(floor(g*256),255), min(floor(b*256),255)];
+  s /= 100;
+  l /= 100;
+  // input: h as an angle in [0,360] and s,l in [0,1] - output: r,g,b in [0,1]
+  let a = s * Math.min(l, 1-l);
+  let f = (n,k = (n+h / 30)%12) => l - a * Math.max(Math.min(k-3,9-k,1),-1);
+  return [Math.round(f(0)*255), Math.round(f(8)*255), Math.round(f(4)*255)];
 }
 
 function rgbToHsl(r,g,b) 
@@ -209,9 +215,9 @@ function rgbToHsl(r,g,b)
   // Calculate saturation
   s = delta == 0 ? 0 : delta / (1 - Math.abs(2 * l - 1));
     
-  // Multiply l and s by 100
-  s = +(s * 100).toFixed(1);
-  l = +(l * 100).toFixed(1);
+  // Multiply l and s by 100 and round up
+  s = Math.floor(s*100);
+  l = Math.floor(l*100);
 
   return [h, s, l];
 }
