@@ -84,9 +84,9 @@ main
   width: 25%;
   display: flex;
   flex-direction: column;
-  --hue: var(--hue-detail);
-  --saturation: var(--saturation-detail);
-  --luminosity: var(--luminosity-detail);
+  --hue: var(--hue-primary);
+  --saturation: var(--saturation-primary);
+  --luminosity: var(--luminosity-primary);
   color: hsl(var(--hue-text), var(--saturation-text), var(--luminosity-text));
 }
 
@@ -104,6 +104,7 @@ main
   --saturation: var(--saturation-secondary);
   --luminosity: var(--luminosity-secondary);
   text-align: center;
+  color: hsl(var(--hue-detail), var(--saturation-detail), var(--luminosity-detail));
 }
 
 .pseudo-main
@@ -135,6 +136,7 @@ main
 {
   width: 100%;
   text-align: center;
+  color: hsl(var(--hue-detail), var(--saturation-detail), var(--luminosity-detail));
 }
 
 /*First pseudo-page*/
