@@ -2,7 +2,10 @@ const root = document.querySelector(':root');
 const copyColorButtons = document.querySelectorAll("[data-copy-button]");
 const generateColorButtons = document.querySelectorAll("[data-generate-button]");
 const formatColorButtons = document.querySelectorAll("[data-change-format-button]");
+const colorOptionsButtons = document.querySelectorAll("[data-options-button]");
 const formatSubmenus = document.querySelectorAll("[data-format-container]");
+const colorControls = document.querySelectorAll("[data-color-controls-container]");
+
 
 copyColorButtons.forEach(button =>
 {
@@ -221,3 +224,33 @@ function rgbToHsl(r,g,b)
 
   return [h, s, l];
 }
+
+Array.from(colorOptionsButtons).forEach(button =>
+  {
+    button.addEventListener("click", ()=>
+    {
+      hideToggler(button.parentNode);
+      hideToggler(button.parentNode.parentNode.children[4]);
+    })
+  })
+
+Array.from(colorControls).forEach(submenu =>
+{
+  /*
+  for (let i = 0; i < 3; i++) 
+  {
+    submenu.children[i].addEventListener("click", ()=>
+    {
+      //Pass the sampleColor and current format:
+      formatConversor(submenu.parentNode.children[1], submenu.children[i])
+    })
+  }
+  */
+
+  //Closes this submenu and opens the main:
+  submenu.children[1].addEventListener("click", () => 
+  {
+    submenu.parentNode.children[2].classList.remove("hide");
+    submenu.classList.add("hide");
+  })
+});
