@@ -17,5 +17,4 @@ Vit0rg
 [MIT](https://github.com/Vit0rg/color-palette-generator/blob/master/LICENSE.md)
 
 ### To do (WIP):
-- JS Implementation (Copy and Change format functions)
-- Add responsiveness
+- JS Documentation

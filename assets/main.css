@@ -30,24 +30,21 @@
 
 body
 {
-  min-height: 100vh;
+  height: 100vh;
   width: 100%;
   display: flex;
-  justify-content: space-between;
   align-items: center;
   flex-direction: column;
-  background: linear-gradient(hsl(10, 0%, 5%) 10%, hsl(10, 0%, 35%));
+  background: linear-gradient(hsl(10, 0%, 5%) 20%, hsl(10, 0%, 45%));
   color: hsl(0, 0%, 95%);
   font-size: 16px;
 }
 
-header, footer
+header
 {
-  height: 10%;
-  width: 100%;
-  padding: 1rem 0;
-  font-size: 1.3rem;
-  text-align: center;
+  height: 5rem;
+  font-size: 2.5rem;
+  line-height: 5rem;
 }
 
 main
@@ -59,16 +56,16 @@ main
   background-repeat: no-repeat;
   background-size: contain;
   background-position: center;
+  flex-grow: 1;
 }
 
 #models
 {
-  height: 10rem;
   width: 100%;
   display: flex;
-  justify-content: space-around;
   align-items: center;
-  background-color: hsl(10, 0%, 50%, 10%);
+  background-color: hsl(10, 0%, 50%, 20%);
+  overflow-x: scroll;
 }
 
 .mutable
@@ -79,20 +76,13 @@ main
 .page-example
 {
   height: 9rem;
-  width: 25%;
-  margin-top: .5rem;
+  margin: 1rem 5%;
   display: flex;
   flex-direction: column;
   --hue: var(--hue-primary);
   --saturation: var(--saturation-primary);
   --luminosity: var(--luminosity-primary);
   color: hsl(var(--hue-text), var(--saturation-text), var(--luminosity-text));
-}
-
-.page-example:nth-last-of-type(2),
-.page-example:last-of-type
-{
-  width: 10%;
 }
 
 .pseudo-header
@@ -142,7 +132,7 @@ main
 .page-example:first-of-type .pseudo-header,
 .page-example:first-of-type .pseudo-footer
 {
-  font-size: 2rem;
+  font-size: 1.5rem;
 }
 
 .page-example:first-of-type .pseudo-main
@@ -243,9 +233,10 @@ main
 
 #color-container
 {
-  min-height: 20rem;
-  min-width: 100%;
-  background-color: hsl(10, 0%, 50%, 10%);
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  background-color: hsl(10, 0%, 50%, 20%);
 }
 
 .component-container
@@ -253,18 +244,16 @@ main
   width: 90%;
   margin: 0 auto;
   display: flex;
-  align-items: center;
   list-style-type: none;
-  flex-grow: 1;
   overflow-x: scroll;
+  flex-grow: 1;
 }
 
 .component-container .color-options
 {
-  height: 20rem;
   min-width: 14rem;
   padding: .25rem .25rem;
-  margin: 1rem;
+  margin: 1.5rem;
 	display: flex;
 	flex-direction: column;
   justify-content: space-evenly;
